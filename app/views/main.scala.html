@@ -1,0 +1,47 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")" rel="stylesheet" media="screen">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.dataTables.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.validate.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.dataTables.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/datatables.ptbr.js")" type="text/javascript"></script>
+    </head>
+    <body>
+      <center>
+
+    @if(request.username()!=null) {
+     <div style="padding-top:30px" class="panel-body" >
+       <div class="btn btn-default">Ol&aacute; <b>@request.username()</b></div>
+       <a class="btn btn-primary" href="@routes.Application.logout">sair</a>
+      </div>
+    }
+
+        @if(flash.containsKey("sucesso")) {
+         <div class="alert alert-success">
+          @flash.get("sucesso")
+         </div>
+        }
+
+       @if(flash.containsKey("erro")) {
+         <div class="alert alert-danger">
+          @flash.get("erro")
+         </div>
+        }
+        <br/>
+        <div class="text-align:center">
+         <img src="@routes.Assets.at("images/vp-logo.png")" alt="VP - vocabul&aacute;rio padr&atilde;o "/>
+        </div>
+
+        @content
+        </center>
+    </body>
+</html>
+

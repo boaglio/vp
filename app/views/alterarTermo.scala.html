@@ -1,0 +1,94 @@
+@(termoForm : Form[Termo], tipo: String, termo: Termo )
+
+@import helper._
+
+@main("Novo termo") {
+
+<div class="container">
+ <div>
+  <form action="/" method="post"  id="novoTermo" class="form-horizontal">
+  <br/>
+  @if(tipo=="add") {
+  <div class="btn btn-default">Novo termo</div>
+   } else {
+  <div class="btn btn-default">Alterar termo</div>
+   }
+
+  <br/>
+  <br/>
+   <div class="row">
+    <div class="input-group">
+     <span class="input-group-addon">informe o nome do termo</span>
+     <input type="text" name="original" id="original" class="form-control" placeholder="termo original ?"  value="@termo.original" >
+    </div>
+   </div>
+   <br/>
+    <div class="row">
+    <div class="input-group">
+     <span class="input-group-addon">informe o nome do termo traduzido</span>
+     <input type="text" name="traduzido" id="traduzido" class="form-control" placeholder="termo traduzido ?"  value="@termo.traduzido" >
+    </div>
+   </div>
+<br/>
+   <div class="row">
+    <div class="input-group">
+     <span class="input-group-addon">informe o contexto do termo</span>
+     <input type="text" name="contexto" id="contexto" class="form-control" placeholder="contexto do termo ?"  value="@termo.contexto"  >
+    </div>
+   </div>
+<br/>
+  @if(tipo=="upd") {
+    <input type="hidden" name="id" id="id"  value="@termo.id" >
+   }
+     <table>
+       <tr>
+         <td>
+               <button id="singlebutton" name="singlebutton" class="btn btn-primary">gravar</button>
+	          </form>
+	       </td>
+	       <td> &nbsp;&nbsp;&nbsp;</td>
+	       <td>
+		       <form method="get" action="/" role="form">
+		        <input class="btn btn-success" type="submit" value="voltar" />
+		       </form>
+	       </td>
+	         @if(tipo=="upd") {
+		       <td> &nbsp;&nbsp;&nbsp;</td>
+		       <td>
+		          <a id="remover" class="btn btn-primary" href="@routes.TermoController.remover(termo.id)">remover</a>
+		       </td>
+              }
+       </tr>
+     </table>
+
+   </div>
+ <script type="text/javascript">
+  document.getElementById('original').focus();
+
+$(document).ready(function(){
+    $('#novoTermo').validate({
+        rules: {
+        	original: {
+                required: true
+            },
+            traduzido: {
+                required: true
+            }
+         },
+         messages: {
+        	 original: {
+                 required: "O campo nome \u00e9 obrigat\u00f3rio."
+             },
+             traduzido: {
+                 required: "O campo traduzido \u00e9 obrigat\u00f3rio."
+             }
+          }
+        });
+    });
+
+$('#remover').click(function() {
+    return window.confirm(this.title || 'Tem certeza?');
+});
+
+</script>
+}

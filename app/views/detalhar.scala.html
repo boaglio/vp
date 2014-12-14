@@ -1,0 +1,36 @@
+@(termo: Termo)
+
+@main("VP - vocabul&aacute;rio padr&atilde;o") {
+
+ <br/>
+ <div class="container">
+
+  <div class="alert alert-success" role="alert">Procure pelo termo para descobrir as tradu&ccedil;&otilde;es existentes </div>
+  <form method="get" action="busca">
+   <p>
+    <div class="input-group">
+     <span class="input-group-addon">Buscar pelo termo </span>
+     <input type="text" name="filtro" id="filtro" class="form-control" placeholder="termo ?">
+    </div>
+   </p>
+   <p>
+    <input class="btn btn-primary btn-lg" type="submit" value="buscar por termo!" />
+   </p>
+  </form>
+   <form method="get" action="novo">
+    <input class="btn btn-primary btn-lg" type="submit" value="novo termo" />
+  </form>
+  <br/>
+ </div>
+     <table>
+	        <tr>
+  	            <td>
+	             <a href="@routes.TermoController.detalhar(termo.id)">@termo.original</a>
+	            </td>
+	            <td>@termo.traduzido</td>
+	        </tr>
+       </table>
+ <script type="text/javascript">
+   document.getElementById('filtro').focus();
+</script>
+}

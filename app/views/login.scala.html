@@ -1,0 +1,66 @@
+@(form: Form[Usuario])
+
+@main("Entrar no VP") {
+
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Entrar no sistema</div>
+                    </div>
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                        <form action="/entrar" method="post"  id="entrar" class="form-horizontal">
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="usuario" type="text" class="form-control" name="usuario" value="" placeholder="usu&aacute;rio ?">
+                                    </div>
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="senha" type="password" class="form-control" name="senha" placeholder="senha ?">
+                                    </div>
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+                                    <div class="col-sm-12 controls">
+                                      <button id="singlebutton" name="singlebutton" class="btn btn-primary">entrar</button>
+                                      &nbsp;&nbsp;
+								       <a href="/"  class="btn btn-success">voltar</a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+        </div>
+
+ <script type="text/javascript">
+
+ document.getElementById('usuario').focus();
+
+$(document).ready(function(){
+    $('#entrar').validate({
+        rules: {
+        	usuario: {
+                required: true
+            },
+            senha: {
+                required: true
+            }
+         },
+         messages: {
+        	 usuario: {
+                 required: "O campo usu\u00e1rio \u00e9 obrigat\u00f3rio."
+             },
+             senha: {
+                 required: "O campo senha \u00e9 obrigat\u00f3rio."
+             }
+          }
+        });
+    });
+</script>
+}

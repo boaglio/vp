@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/vp-br -Dhttp.port=$PORT -Dconfig.resource=heroku.conf

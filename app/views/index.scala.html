@@ -1,0 +1,51 @@
+@(message: String)
+
+@main(message) {
+
+ <br/>
+ <div class="container">
+
+  <div class="alert alert-success" role="alert">Procure pelo termo para descobrir as tradu&ccedil;&otilde;es existentes </div>
+
+  <form method="get" action="busca"  id="busca" role="form">
+
+   <div class="row">
+    <div class="input-group">
+     <span class="input-group-addon">Buscar pelo termo </span>
+     <input type="text" name="filtro" id="filtro" class="form-control" placeholder="termo ?"  >
+    </div>
+   </div>
+   <br/>
+   <div class="row">
+
+    <div class="col-md-3">
+     <input class="btn btn-success btn-lg" type="submit" value="buscar por termo!" />
+     </form>
+    </div>
+    <div class="col-md-3">
+     <form method="get" action="novo" role="form">
+      <input class="btn btn-primary btn-lg" type="submit" value="novo termo" />
+     </form>
+    </div>
+ <script type="text/javascript">
+
+ document.getElementById('filtro').focus();
+
+$(document).ready(function(){
+   $('#busca').validate({
+       rules: {
+       	filtro: {
+               required: true,
+               minlength: 2
+           }
+        },
+        messages: {
+       	 filtro: {
+                required: "O campo de busca  \u00e9 obrigat\u00f3rio.",
+                minlength: "O campo de busca deve conter no m\u00ednimo 2 caracteres."
+            },
+         }
+       });
+   });
+</script>
+}

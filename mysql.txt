@@ -1,0 +1,7 @@
+
+mysql -u bff3e57f942233 -h us-cdbr-iron-east-01.cleardb.net  -p  heroku_fd959484d8004d4  < vp.sql
+
+mysql -u bff3e57f942233 -h us-cdbr-iron-east-01.cleardb.net  -p  heroku_fd959484d8004d4
+
+e82903d6
+
